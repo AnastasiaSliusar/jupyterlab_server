@@ -9,7 +9,7 @@ from typing import Any
 
 from jupyter_server.extension.application import ExtensionApp, ExtensionAppJinjaMixin
 from jupyter_server.utils import url_path_join as ujoin
-from traitlets import Dict, Integer, Unicode, observe
+from traitlets import Dict, Integer, Unicode, Bool, observe
 
 from ._version import __version__
 from .handlers import LabConfig, add_handlers
@@ -62,6 +62,11 @@ class LabServerApp(ExtensionAppJinjaMixin, LabConfig, ExtensionApp):
         .. versionchanged:: 2.0.0
             `LabServerApp.whitetlist_uris` renamed to `allowed_extensions_uris`
         """,
+    )
+    allow_insecure_kernelspec_params = Bool(
+        False,
+        config=True,
+        help="""Allow to use insecure kernelspec parameters""",
     )
 
     listings_refresh_seconds = Integer(

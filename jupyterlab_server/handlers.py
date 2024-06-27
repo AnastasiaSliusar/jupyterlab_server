@@ -92,6 +92,8 @@ class LabHandler(ExtensionHandlerJinjaMixin, ExtensionHandlerMixin, JupyterHandl
         page_config.setdefault("serverRoot", server_root)
         page_config["store_id"] = self.application.store_id  # type:ignore[attr-defined]
 
+        page_config["allow_insecure_kernelspec_params"] = app.allow_insecure_kernelspec_params  # type:ignore[attr-defined]
+
         server_root = os.path.normpath(os.path.expanduser(server_root))
         preferred_path = ""
         try:
